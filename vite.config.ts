@@ -23,6 +23,7 @@ export default defineConfig(({ mode }) => {
         },
         build: {
             minify: true,
+            sourcemap: true,
         },
         plugins: [
             react(),
