@@ -26,7 +26,7 @@ export const Textarea: FC<TextareaProps> = ({ placeholder, value, minRows = 10, 
 
     return (
         <TextareaAutosize
-            className="w-full resize-none p-2 rounded border-1 border-gray-4 hover:border-gray-8 focus:outline focus:outline-blue-4 focus:outline-offset-2 focus:outline-4"
+            className="w-full resize-none p-2 rounded border-1 border-gray-4 hover:border-gray-8 focus:outline focus:outline-blue-4 focus:outline-offset-2 focus:outline-4 text-sm"
             ref={ref}
             value={value}
             placeholder={placeholder}

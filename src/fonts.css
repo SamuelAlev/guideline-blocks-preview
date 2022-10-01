@@ -33,3 +33,10 @@
     src: url('/fonts/SpaceGroteskFrontify-Bold.woff2') format('woff2'),
         url('/fonts/SpaceGroteskFrontify-Bold.woff') format('woff');
 }
+
+@font-face {
+    font-family: 'Menlo Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Menlo Regular'), url('/fonts/Menlo-Regular.woff') format('woff');
+}

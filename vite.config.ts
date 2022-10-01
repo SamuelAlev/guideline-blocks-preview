@@ -34,6 +34,7 @@ export default defineConfig(({ mode }) => {
                         provider: 'none',
                         fonts: {
                             sans: 'Space Grotesk Frontify',
+                            mono: 'Menlo Regular',
                         },
                     }),
                     presetIcons(),
