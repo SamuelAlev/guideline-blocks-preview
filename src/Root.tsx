@@ -84,13 +84,13 @@ export const Root = () => {
         <div className="divide-y divide-[#f1f1f1] select-none flex flex-col">
             <Header />
 
-            <div className="w-full flex justify-center flex-1 h-full relative">
+            <div className="w-full flex justify-center">
                 <Container>
-                    <div className="pt-4  flex flex-col-reverse justify-end lg:flex-row lg:divide-x lg:divide-[#f1f1f1]">
+                    <div className="pt-4 flex flex-col-reverse justify-end lg:flex-row lg:divide-x lg:divide-[#f1f1f1]">
                         <aside className="lg:w-4/12 xl:2/12 p-4 lg:pr-6 flex flex-col gap-6">
                             <div className="flex flex-col gap-4">
                                 <div className="flex gap-2 items-center">
-                                    <h1 className="text-sm font-mono font-bold">Block Data</h1>
+                                    <h1 className="flex-grow text-sm font-mono font-bold">Block Data</h1>
                                     <button
                                         className="p-2 flex items-center justify-center rounded hover:bg-[#eaebeb]"
                                         onClick={() => computeHashAndSetUrl('data', '')}
@@ -108,7 +108,7 @@ export const Root = () => {
                             </div>
                             <div className="flex flex-col gap-4">
                                 <div className="flex gap-2 items-center">
-                                    <h1 className="text-sm font-mono font-bold">Block Settings</h1>
+                                    <h1 className="flex-grow text-sm font-mono font-bold">Block Settings</h1>
                                     <button
                                         className="p-2 flex items-center justify-center rounded hover:bg-[#eaebeb]"
                                         onClick={() => computeHashAndSetUrl('settings', '')}
@@ -137,8 +137,8 @@ export const Root = () => {
                                     css={blockData.files.css}
                                 />
                             ) : (
-                                <div className="flex flex-col gap-8">
-                                    <span>Add some block data to have a preview</span>
+                                <div className="flex flex-col gap-4 pt-6">
+                                    <span>Add some block data and settings to have a preview.</span>
                                     <div className="flex gap-4">
                                         <NavLink
                                             to={EXAMPLE_BLOCK_1}
