@@ -81,12 +81,12 @@ export const Root = () => {
     );
 
     return (
-        <div className="divide-y divide-[#f1f1f1] select-none">
+        <div className="divide-y divide-[#f1f1f1] select-none flex flex-col">
             <Header />
 
-            <div className="w-full flex justify-center">
+            <div className="w-full flex justify-center flex-1 h-full relative">
                 <Container>
-                    <div className="pt-4 flex flex-col-reverse justify-end lg:flex-row lg:divide-x lg:divide-[#f1f1f1]">
+                    <div className="pt-4  flex flex-col-reverse justify-end lg:flex-row lg:divide-x lg:divide-[#f1f1f1]">
                         <aside className="lg:w-4/12 xl:2/12 p-4 lg:pr-6 flex flex-col gap-6">
                             <div className="flex flex-col gap-4">
                                 <div className="flex gap-2 items-center">
