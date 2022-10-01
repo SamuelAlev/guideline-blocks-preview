@@ -3,11 +3,11 @@ import { useSearchParams } from 'react-router-dom';
 import { bytesToBase64 } from 'byte-base64';
 import brotliPromise from 'brotli-wasm';
 
+import { ContentArea } from './ContentArea';
 import { Header } from './Header';
+import { ParametersSidebar } from './ParametersSidebar';
 import { Container } from './components';
 import { useDecodeUrl, useSetEditingShortcut } from './hooks';
-import { ParametersSidebar } from './ParametersSidebar';
-import { ContentArea } from './ContentArea';
 import { useBlockState } from './states';
 
 export const Root = () => {
