@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 import { useBlockState } from '../states';
-import { merge } from '../utils';
+import { isMac, merge } from '../utils';
 
 export const ViewEditToggle = () => {
     const { isEditing, setIsEditing } = useBlockState();
@@ -18,7 +18,7 @@ export const ViewEditToggle = () => {
                     !isEditing ? 'bg-[#424747] text-white' : 'hover:bg-[#eaebeb]',
                 ])}
                 onClick={() => setIsEditing(false)}
-                title="Switch to view mode"
+                title={`Switch to view mode (${isMac ? '⌘+e' : 'ctrl+e'})`}
             >
                 <div className="i-octicon-eye-16" />
             </button>
@@ -28,7 +28,7 @@ export const ViewEditToggle = () => {
                     isEditing ? 'bg-[#424747] text-white' : 'hover:bg-[#eaebeb]',
                 ])}
                 onClick={() => setIsEditing(true)}
-                title="Switch to edit mode"
+                title={`Switch to edit mode (${isMac ? '⌘+e' : 'ctrl+e'})`}
             >
                 <div className="i-octicon-pencil-16" />
             </button>
