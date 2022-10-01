@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { Block } from './Block';
 
 import { ViewEditToggle } from './components';
-import { EXAMPLE_BLOCK_1, EXAMPLE_BLOCK_2 } from './constants';
+import { EXAMPLE_BLOCK_1, EXAMPLE_BLOCK_2, EXAMPLE_BLOCK_3, EXAMPLE_BLOCK_4 } from './constants';
 import { getBlockIdFromJsPath } from './helpers';
 import { useBlockState } from './states';
 
@@ -48,6 +48,20 @@ export const ContentArea = ({}) => {
                             title="Go to example 2"
                         >
                             Example 2
+                        </NavLink>
+                        <NavLink
+                            to={EXAMPLE_BLOCK_3}
+                            className="py-2 px-4 items-center justify-center rounded bg-[#424747] hover:bg-[#2d3232] text-white"
+                            title="Go to example 3"
+                        >
+                            Example 3
+                        </NavLink>
+                        <NavLink
+                            to={EXAMPLE_BLOCK_4}
+                            className="py-2 px-4 items-center justify-center rounded bg-[#424747] hover:bg-[#2d3232] text-white"
+                            title="Go to example 4"
+                        >
+                            Example 4
                         </NavLink>
                     </div>
                 </div>
