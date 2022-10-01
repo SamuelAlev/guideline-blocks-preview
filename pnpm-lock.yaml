@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@frontify/app-bridge': 3.0.0-beta.17
   '@frontify/eslint-config-react': ^0.15.2
-  '@iconify-json/tabler': ^1.1.37
+  '@iconify-json/octicon': ^1.1.20
   '@types/react': ^17.0.50
   '@types/react-dom': ^17.0.17
   '@unocss/preset-icons': ^0.45.26
@@ -39,7 +39,7 @@ dependencies:
 
 devDependencies:
   '@frontify/eslint-config-react': 0.15.2_em3ilpwvzzmjnx5c5gl5jzse5q
-  '@iconify-json/tabler': 1.1.37
+  '@iconify-json/octicon': 1.1.20
   '@types/react': 17.0.50
   '@types/react-dom': 17.0.17
   '@unocss/preset-icons': 0.45.26
@@ -463,8 +463,8 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@iconify-json/tabler/1.1.37:
-    resolution: {integrity: sha512-rnJn+xaKdDn2viyc8LGzqxLdgegmbjVaZad0w6Yj8FAi5/3TwSYkoDhysGeWboZZrOyHbCnEnY16Da+w+w+qDw==}
+  /@iconify-json/octicon/1.1.20:
+    resolution: {integrity: sha512-EN+ImV6kKvKdoQKQIjYGnhzIohIPnNkMwdWyVtA7iRGrWlKMfO5I0wxzo6MVdG7jmTURsrH6kiCCFtdz+czrPQ==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: true

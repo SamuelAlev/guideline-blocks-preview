@@ -17,8 +17,9 @@ export const ViewEditToggle = () => {
                     !isEditing ? 'bg-[#424747] text-white' : 'hover:bg-[#eaebeb]',
                 ])}
                 onClick={() => setIsEditing(false)}
+                title="Switch to view mode"
             >
-                <div className="i-tabler-eye" />
+                <div className="i-octicon-eye-16" />
             </button>
             <button
                 className={merge([
@@ -26,8 +27,9 @@ export const ViewEditToggle = () => {
                     isEditing ? 'bg-[#424747] text-white' : 'hover:bg-[#eaebeb]',
                 ])}
                 onClick={() => setIsEditing(true)}
+                title="Switch to edit mode"
             >
-                <div className="i-tabler-pencil" />
+                <div className="i-octicon-pencil-16" />
             </button>
         </div>
     );

@@ -22,15 +22,18 @@ export default defineConfig(({ mode }) => {
         optimizeDeps: {
             exclude: ['brotli-wasm'],
         },
+        build: {
+            minify: true,
+        },
         plugins: [
             react(),
             Unocss({
                 presets: [
                     presetUno(),
                     presetWebFonts({
-                        provider: 'google',
+                        provider: 'none',
                         fonts: {
-                            sans: 'Roboto',
+                            sans: 'Space Grotesk Frontify',
                         },
                     }),
                     presetIcons(),

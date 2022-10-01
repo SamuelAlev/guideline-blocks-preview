@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { NavLink, useSearchParams } from 'react-router-dom';
 import { base64ToBytes, bytesToBase64 } from 'byte-base64';
 import brotliPromise from 'brotli-wasm';
 
@@ -7,6 +7,9 @@ import { Block } from './Block';
 import { Textarea, ViewEditToggle } from './components';
 import { getBlockIdFromJsPath } from './helpers';
 import { useBlockState } from './states';
+import { Header } from './Header';
+import { Container } from './components/Container';
+import { EXAMPLE_BLOCK_1 } from './constants';
 
 export const Root = () => {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -74,32 +77,58 @@ export const Root = () => {
     );
 
     return (
-        <div className="font-sans box-border w-full min-h-screen h-full flex flex-col-reverse justify-end lg:flex-row divide-x divide-gray select-none">
-            <aside className="lg:w-4/12 xl:2/12 p-4 flex flex-col gap-6">
-                <div className="flex flex-col gap-4">
-                    <h1 className="text-2xl">Block Data</h1>
-                    <Textarea minRows={5} value={data} onChange={(value) => computeHashAndSetUrl('data', value)} />
-                </div>
-                <div className="flex flex-col gap-4">
-                    <h1 className="text-2xl">Block Settings</h1>
-                    <Textarea value={settings} onChange={(value) => computeHashAndSetUrl('settings', value)} />
-                </div>
-            </aside>
-            <main className="lg:w-8/12 xl:10/12 p-4 flex flex-col gap-4">
-                <div className="flex gap-4 items-center">
-                    <h1 className="text-2xl">Block Rendering</h1>
-                    <ViewEditToggle />
-                </div>
-                <div className="h-full rounded border-1 border-gray-4 p-4">
-                    {blockData?.files?.js && (
-                        <Block
-                            id={getBlockIdFromJsPath(blockData.files.js)}
-                            js={blockData.files.js}
-                            css={blockData.files.css}
-                        />
-                    )}
-                </div>
-            </main>
+        <div className="divide-y divide-[#f1f1f1] select-none">
+            <Header />
+
+            <div className="w-full flex justify-center">
+                <Container>
+                    <div className="pt-4 flex flex-col-reverse justify-end lg:flex-row lg:divide-x lg:divide-[#f1f1f1]">
+                        <aside className="lg:w-4/12 xl:2/12 p-4 flex flex-col gap-6">
+                            <div className="flex flex-col gap-4">
+                                <h1 className="text-2xl">Block Data</h1>
+                                <Textarea
+                                    minRows={5}
+                                    value={data}
+                                    onChange={(value) => computeHashAndSetUrl('data', value)}
+                                />
+                            </div>
+                            <div className="flex flex-col gap-4">
+                                <h1 className="text-2xl">Block Settings</h1>
+                                <Textarea
+                                    value={settings}
+                                    onChange={(value) => computeHashAndSetUrl('settings', value)}
+                                />
+                            </div>
+                        </aside>
+                        <main className="lg:w-8/12 xl:10/12 p-12 flex flex-col gap-4">
+                            <div className="flex gap-4 items-center">
+                                <h1 className="text-2xl">Block Rendering</h1>
+                                <ViewEditToggle />
+                            </div>
+                            {blockData?.files?.js ? (
+                                <Block
+                                    id={getBlockIdFromJsPath(blockData.files.js)}
+                                    js={blockData.files.js}
+                                    css={blockData.files.css}
+                                />
+                            ) : (
+                                <div className="flex flex-col gap-8">
+                                    <span>Add some block data to have a preview</span>
+                                    <div>
+                                        <NavLink
+                                            to={EXAMPLE_BLOCK_1}
+                                            className="p-2 items-center justify-center rounded bg-[#424747] hover:bg-[#2d3232] text-white"
+                                            title="Go to example 1"
+                                        >
+                                            Example 1
+                                        </NavLink>
+                                    </div>
+                                </div>
+                            )}
+                        </main>
+                    </div>
+                </Container>
+            </div>
         </div>
     );
 };
