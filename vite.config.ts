@@ -2,7 +2,6 @@ import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import Unocss from 'unocss/vite';
 import presetUno from '@unocss/preset-uno';
-import presetWebFonts from '@unocss/preset-web-fonts';
 import presetIcons from '@unocss/preset-icons';
 
 const htmlPlugin = (env: ReturnType<typeof loadEnv>) => {
@@ -28,17 +27,7 @@ export default defineConfig(({ mode }) => {
         plugins: [
             react(),
             Unocss({
-                presets: [
-                    presetUno(),
-                    presetWebFonts({
-                        provider: 'none',
-                        fonts: {
-                            sans: 'Space Grotesk Frontify',
-                            mono: 'Menlo Regular',
-                        },
-                    }),
-                    presetIcons(),
-                ],
+                presets: [presetUno(), presetIcons()],
             }),
             htmlPlugin(env),
         ],

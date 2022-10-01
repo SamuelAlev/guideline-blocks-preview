@@ -2,7 +2,7 @@ import { Container } from './components/Container';
 
 export const Header = () => {
     return (
-        <header className="w-full h-20 flex text-sans items-center justify-center">
+        <header className="w-full h-20 flex font-sans items-center justify-center">
             <Container>
                 <div className="px-4 flex gap-4 items-center">
                     <img className="h-5 w-5" src="/frontify.svg" alt="Frontify nook logo" />

@@ -109,6 +109,7 @@ export const Root = () => {
                                 <h1 className="text-lg font-mono font-bold">Block Rendering</h1>
                                 <ViewEditToggle />
                             </div>
+
                             {blockData?.files?.js ? (
                                 <Block
                                     id={getBlockIdFromJsPath(blockData.files.js)}
