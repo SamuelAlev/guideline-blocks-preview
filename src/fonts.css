@@ -41,6 +41,17 @@
     src: local('Menlo Regular'), url('/fonts/Menlo-Regular.woff') format('woff');
 }
 
+@font-face {
+    font-family: 'redacted';
+    font-style: normal;
+    font-weight: normal;
+    src: url('/fonts/redacted-script-bold.eot');
+    src: url('/fonts/redacted-script-bold.eot?#iefix') format('embedded-opentype'),
+        url('/fonts/redacted-script-bold.woff2') format('woff2'), url('/fonts/redacted-script-bold.woff') format('woff'),
+        url('/fonts/redacted-script-bold.ttf') format('truetype'),
+        url('/fonts/redacted-script-bold.svg#redacted_scriptbold') format('svg');
+}
+
 .font-mono {
     font-family: 'Menlo Regular', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
         'Courier New', monospace;
