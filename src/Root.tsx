@@ -83,7 +83,7 @@ export const Root = () => {
             <div className="w-full flex justify-center">
                 <Container>
                     <div className="pt-4 flex flex-col-reverse justify-end lg:flex-row lg:divide-x lg:divide-[#f1f1f1]">
-                        <aside className="lg:w-4/12 xl:2/12 pt-4 pr-6 flex flex-col gap-6">
+                        <aside className="lg:w-4/12 xl:2/12 p-4 lg:pr-6 flex flex-col gap-6">
                             <div className="flex flex-col gap-4">
                                 <h1 className="text-sm font-mono font-bold">Block Data</h1>
                                 <Textarea
@@ -100,7 +100,7 @@ export const Root = () => {
                                 />
                             </div>
                         </aside>
-                        <main className="lg:w-8/12 xl:10/12 pt-4 pl-6 flex flex-col gap-4">
+                        <main className="lg:w-8/12 xl:10/12 p-4 lg:pl-6 flex flex-col gap-4">
                             <div className="flex gap-4 items-center">
                                 <h1 className="text-lg font-mono font-bold">Block Rendering</h1>
                                 <ViewEditToggle />
