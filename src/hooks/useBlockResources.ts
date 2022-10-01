@@ -22,7 +22,7 @@ export const useBlockResources = (jsPath: string, cssPath?: string) => {
             scriptElement.setAttribute('data-block-script', '');
 
             scriptElement.onload = () => resolve();
-            scriptElement.onerror = (error) => reject(error);
+            scriptElement.onerror = () => reject(new Error('Could not load the block script'));
 
             document.head.appendChild(scriptElement);
         });
@@ -36,7 +36,7 @@ export const useBlockResources = (jsPath: string, cssPath?: string) => {
             linkElement.setAttribute('data-block-style', '');
 
             linkElement.onload = () => resolve();
-            linkElement.onerror = (error) => reject(error);
+            linkElement.onerror = () => reject(new Error('Could not load the block style'));
 
             document.head.appendChild(linkElement);
         });
@@ -48,6 +48,7 @@ export const useBlockResources = (jsPath: string, cssPath?: string) => {
 
             try {
                 await Promise.all([loadBlockScript(jsPath), ...(cssPath ? [loadBlockStyle(cssPath)] : [])]);
+                setErrors(null);
             } catch (error) {
                 setErrors(error as Error);
             } finally {

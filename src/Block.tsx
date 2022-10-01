@@ -15,9 +15,12 @@ export const Block: FC<BlockProps> = ({ id, js, css }) => {
     const { ErrorBoundary, didCatch, error } = useErrorBoundary();
     const { isEditing, settings } = useBlockState();
 
-    const { loading, errors } = useBlockResources(js, css);
+    const { loading, errors: errorsWhileLoadingResources } = useBlockResources(js, css);
 
-    const LoadedBlock = useMemo(() => !loading && !errors && window[id as keyof Window]?.block, [id, errors, loading]);
+    const LoadedBlock = useMemo(
+        () => !loading && !errorsWhileLoadingResources && window[id as keyof Window]?.block,
+        [id, errorsWhileLoadingResources, loading],
+    );
 
     const BlockWithStubbedAppBridge = useMemo(() => {
         let parsedBlockSettings = {};
@@ -41,8 +44,11 @@ export const Block: FC<BlockProps> = ({ id, js, css }) => {
 
     return (
         <>
-            {didCatch ? (
-                <p>An error has been caught while rendering the block: {error.message}</p>
+            {didCatch || errorsWhileLoadingResources ? (
+                <div className="flex flex-col gap-2 text-red-8">
+                    <span className="text-xl">An error has been caught while rendering the block</span>
+                    <span>{error?.message ?? errorsWhileLoadingResources?.message ?? 'No error message received'}</span>
+                </div>
             ) : (
                 <ErrorBoundary>
                     <BlockWithStubbedAppBridge />
