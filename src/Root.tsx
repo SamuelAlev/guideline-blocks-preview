@@ -1,62 +1,25 @@
-import { useCallback, useEffect, useMemo } from 'react';
-import { NavLink, useSearchParams } from 'react-router-dom';
-import { base64ToBytes, bytesToBase64 } from 'byte-base64';
+import { useCallback, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { bytesToBase64 } from 'byte-base64';
 import brotliPromise from 'brotli-wasm';
 
 import { Header } from './Header';
-import { Block } from './Block';
-import { Container, Textarea, ViewEditToggle } from './components';
-import { getBlockIdFromJsPath } from './helpers';
+import { Container } from './components';
 import { useSetEditingShortcut } from './hooks';
+import { ParametersSidebar } from './ParametersSidebar';
+import { ContentArea } from './ContentArea';
+import { useDecodeUrl } from './hooks/useDecodeUrl';
 import { useBlockState } from './states';
-import { EXAMPLE_BLOCK_1, EXAMPLE_BLOCK_2 } from './constants';
 
 export const Root = () => {
-    useSetEditingShortcut();
+    const { setSettings, setData } = useBlockState();
+
     const [searchParams, setSearchParams] = useSearchParams();
+    const { data, settings } = useDecodeUrl(searchParams);
+    useEffect(() => setData(data ?? ''), [data, setData]);
+    useEffect(() => setSettings(settings ?? ''), [settings, setSettings]);
 
-    const { settings, setSettings, data, setData } = useBlockState();
-
-    const blockData = useMemo(() => {
-        try {
-            return JSON.parse(data);
-        } catch {
-            return null;
-        }
-    }, [data]);
-
-    useEffect(() => {
-        const decodeFromSearchParams = async (key: string) => {
-            const brotli = await brotliPromise;
-
-            const textDecoder = new TextDecoder();
-
-            const parameterValue = searchParams.get(key);
-            try {
-                if (parameterValue) {
-                    const decompressedData = brotli.decompress(base64ToBytes(parameterValue));
-                    const decodedData = textDecoder.decode(decompressedData);
-
-                    return decodedData;
-                } else {
-                    return '';
-                }
-            } catch {
-                return 'Can not decode';
-            }
-        };
-
-        const decodeAndSetData = async () => {
-            setData(await decodeFromSearchParams('data'));
-        };
-
-        const decodeAndSetSettings = async () => {
-            setSettings(await decodeFromSearchParams('settings'));
-        };
-
-        decodeAndSetData();
-        decodeAndSetSettings();
-    }, [searchParams, setData, setSettings]);
+    useSetEditingShortcut();
 
     const computeHashAndSetUrl = useCallback(
         async (key: string, value: string) => {
@@ -89,75 +52,13 @@ export const Root = () => {
                 <Container>
                     <div className="pt-4 flex flex-col-reverse justify-end lg:flex-row lg:divide-x lg:divide-[#f1f1f1]">
                         <aside className="lg:w-4/12 xl:2/12 p-4 lg:pr-6 flex flex-col gap-6">
-                            <div className="flex flex-col gap-4">
-                                <div className="flex gap-2 items-center">
-                                    <h1 className="flex-grow text-sm font-mono font-bold">Block Data</h1>
-                                    <button
-                                        className="p-2 flex items-center justify-center rounded hover:bg-[#eaebeb]"
-                                        onClick={() => computeHashAndSetUrl('data', '')}
-                                        title="Switch to edit mode"
-                                    >
-                                        <div className="i-octicon-trash-16" />
-                                    </button>
-                                </div>
-                                <Textarea
-                                    minRows={5}
-                                    value={data}
-                                    placeholder="{}"
-                                    onChange={(value) => computeHashAndSetUrl('data', value)}
-                                />
-                            </div>
-                            <div className="flex flex-col gap-4">
-                                <div className="flex gap-2 items-center">
-                                    <h1 className="flex-grow text-sm font-mono font-bold">Block Settings</h1>
-                                    <button
-                                        className="p-2 flex items-center justify-center rounded hover:bg-[#eaebeb]"
-                                        onClick={() => computeHashAndSetUrl('settings', '')}
-                                        title="Switch to edit mode"
-                                    >
-                                        <div className="i-octicon-trash-16" />
-                                    </button>
-                                </div>
-                                <Textarea
-                                    value={settings}
-                                    placeholder="{}"
-                                    onChange={(value) => computeHashAndSetUrl('settings', value)}
-                                />
-                            </div>
+                            <ParametersSidebar
+                                onDataChange={(value) => computeHashAndSetUrl('data', value)}
+                                onSettingsChange={(value) => computeHashAndSetUrl('settings', value)}
+                            />
                         </aside>
                         <main className="lg:w-8/12 xl:10/12 p-4 lg:pl-6 flex flex-col gap-4">
-                            <div className="flex gap-4 items-center">
-                                <h1 className="text-lg font-mono font-bold">Block Rendering</h1>
-                                <ViewEditToggle />
-                            </div>
-
-                            {blockData?.files?.js ? (
-                                <Block
-                                    id={getBlockIdFromJsPath(blockData.files.js)}
-                                    js={blockData.files.js}
-                                    css={blockData.files.css}
-                                />
-                            ) : (
-                                <div className="flex flex-col gap-4 pt-6">
-                                    <span>Add some block data and settings to have a preview.</span>
-                                    <div className="flex gap-4">
-                                        <NavLink
-                                            to={EXAMPLE_BLOCK_1}
-                                            className="py-2 px-4 items-center justify-center rounded bg-[#424747] hover:bg-[#2d3232] text-white"
-                                            title="Go to example 1"
-                                        >
-                                            Example 1
-                                        </NavLink>
-                                        <NavLink
-                                            to={EXAMPLE_BLOCK_2}
-                                            className="py-2 px-4 items-center justify-center rounded bg-[#424747] hover:bg-[#2d3232] text-white"
-                                            title="Go to example 2"
-                                        >
-                                            Example 2
-                                        </NavLink>
-                                    </div>
-                                </div>
-                            )}
+                            <ContentArea />
                         </main>
                     </div>
                 </Container>
