@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
-import { useBlockState } from '../states/useBlockState';
+
+import { useBlockState } from '../states';
 import { merge } from '../utils';
 
 export const ViewEditToggle = () => {

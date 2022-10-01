@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
+
 import { FRONTIFY_ARTIFACT_DOMAIN } from '../constants';
 
 export const useBlockResources = (jsPath: string, cssPath?: string) => {
