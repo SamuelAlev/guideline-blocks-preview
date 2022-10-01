@@ -5,10 +5,9 @@ import brotliPromise from 'brotli-wasm';
 
 import { Header } from './Header';
 import { Container } from './components';
-import { useSetEditingShortcut } from './hooks';
+import { useDecodeUrl, useSetEditingShortcut } from './hooks';
 import { ParametersSidebar } from './ParametersSidebar';
 import { ContentArea } from './ContentArea';
-import { useDecodeUrl } from './hooks/useDecodeUrl';
 import { useBlockState } from './states';
 
 export const Root = () => {
