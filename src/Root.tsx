@@ -3,15 +3,16 @@ import { NavLink, useSearchParams } from 'react-router-dom';
 import { base64ToBytes, bytesToBase64 } from 'byte-base64';
 import brotliPromise from 'brotli-wasm';
 
-import { Block } from './Block';
-import { Textarea, ViewEditToggle } from './components';
-import { getBlockIdFromJsPath } from './helpers';
-import { useBlockState } from './states';
 import { Header } from './Header';
-import { Container } from './components/Container';
+import { Block } from './Block';
+import { Container, Textarea, ViewEditToggle } from './components';
+import { getBlockIdFromJsPath } from './helpers';
+import { useSetEditingShortcut } from './hooks';
+import { useBlockState } from './states';
 import { EXAMPLE_BLOCK_1, EXAMPLE_BLOCK_2 } from './constants';
 
 export const Root = () => {
+    useSetEditingShortcut();
     const [searchParams, setSearchParams] = useSearchParams();
 
     const { settings, setSettings, data, setData } = useBlockState();
