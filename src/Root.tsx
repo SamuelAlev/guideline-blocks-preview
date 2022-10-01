@@ -9,7 +9,7 @@ import { getBlockIdFromJsPath } from './helpers';
 import { useBlockState } from './states';
 import { Header } from './Header';
 import { Container } from './components/Container';
-import { EXAMPLE_BLOCK_1 } from './constants';
+import { EXAMPLE_BLOCK_1, EXAMPLE_BLOCK_2 } from './constants';
 
 export const Root = () => {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -119,13 +119,20 @@ export const Root = () => {
                             ) : (
                                 <div className="flex flex-col gap-8">
                                     <span>Add some block data to have a preview</span>
-                                    <div>
+                                    <div className="flex gap-4">
                                         <NavLink
                                             to={EXAMPLE_BLOCK_1}
-                                            className="p-2 items-center justify-center rounded bg-[#424747] hover:bg-[#2d3232] text-white"
+                                            className="py-2 px-4 items-center justify-center rounded bg-[#424747] hover:bg-[#2d3232] text-white"
                                             title="Go to example 1"
                                         >
                                             Example 1
+                                        </NavLink>
+                                        <NavLink
+                                            to={EXAMPLE_BLOCK_2}
+                                            className="py-2 px-4 items-center justify-center rounded bg-[#424747] hover:bg-[#2d3232] text-white"
+                                            title="Go to example 2"
+                                        >
+                                            Example 2
                                         </NavLink>
                                     </div>
                                 </div>
