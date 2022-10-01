@@ -1,0 +1,1 @@
+export const FRONTIFY_ARTIFACT_DOMAIN = import.meta.env.VITE_FRONTIFY_ARTIFACT_DOMAIN;
