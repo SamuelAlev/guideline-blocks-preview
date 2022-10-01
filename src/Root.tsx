@@ -16,8 +16,8 @@ export const Root = () => {
 
     const [searchParams, setSearchParams] = useSearchParams();
     const { data, settings } = useDecodeUrl(searchParams);
-    useEffect(() => setData(data ?? ''), [data, setData]);
-    useEffect(() => setSettings(settings ?? ''), [settings, setSettings]);
+    useEffect(() => setData(data), [data, setData]);
+    useEffect(() => setSettings(settings), [settings, setSettings]);
 
     useSetEditingShortcut();
 

@@ -3,14 +3,17 @@ import { base64ToBytes } from 'byte-base64';
 import brotliPromise from 'brotli-wasm';
 
 type SearchParameters = {
-    data?: string;
-    settings?: string;
+    data: string;
+    settings: string;
 };
 
 const SEARCH_PARAMETERS_KEYS: (keyof SearchParameters)[] = ['data', 'settings'];
 
 export const useDecodeUrl = (searchParams: URLSearchParams) => {
-    const [decodedSearchParams, setDecodedSearchParams] = useState<SearchParameters>({});
+    const [decodedSearchParams, setDecodedSearchParams] = useState<SearchParameters>({
+        data: '',
+        settings: '',
+    });
 
     useEffect(() => {
         const decodeSearchParameters = async () => {
