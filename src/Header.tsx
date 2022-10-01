@@ -9,9 +9,11 @@ export const Header = () => {
                     <div className="flex-grow flex gap-4 items-center">
                         <img className="h-5 w-5" src="/frontify.svg" alt="Frontify nook logo" />
                         <div className="flex gap-1 items-center justify-center">
-                            <span className="text-gray-5/50">Developer Resources</span>
-                            <div className="i-octicon-chevron-right-24 text-gray-5/50 text-xl" />
-                            <NavLink to="/">Block Preview</NavLink>
+                            <span className="text-gray-5/50 hidden md:visible">Developer Resources</span>
+                            <div className="i-octicon-chevron-right-24 text-gray-5/50 text-xl hidden md:visible" />
+                            <NavLink to="/" className="whitespace-nowrap">
+                                Block Preview
+                            </NavLink>
                         </div>
                     </div>
 
