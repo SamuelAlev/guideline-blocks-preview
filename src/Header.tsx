@@ -1,10 +1,21 @@
+import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { Container } from './components/Container';
+import { Container } from './components';
+import { merge } from './utils';
 
-export const Header = () => {
+type HeaderProps = {
+    showShadow?: boolean;
+};
+
+export const Header: FC<HeaderProps> = ({ showShadow }) => {
     return (
-        <header className="w-full h-20 flex font-sans items-center justify-center">
+        <header
+            className={merge([
+                'w-full min-h-20 h-20 flex font-sans items-center justify-center z-10',
+                showShadow && 'shadow-md',
+            ])}
+        >
             <Container>
                 <div className="flex px-4">
                     <div className="flex-grow flex gap-4 items-center">
