@@ -59,17 +59,21 @@ export const Root = () => {
 
     const computeHashAndSetUrl = useCallback(
         async (key: string, value: string) => {
-            const brotli = await brotliPromise;
-
-            const textEncoder = new TextEncoder();
-
-            const uncompressedData = textEncoder.encode(value);
-            const compressedData = brotli.compress(uncompressedData);
-
-            const b64encoded = bytesToBase64(compressedData);
-
             const url = new URL(window.location.href);
-            url.searchParams.set(key, b64encoded);
+
+            if (value) {
+                const brotli = await brotliPromise;
+
+                const textEncoder = new TextEncoder();
+
+                const uncompressedData = textEncoder.encode(value);
+                const compressedData = brotli.compress(uncompressedData);
+
+                const b64encoded = bytesToBase64(compressedData);
+                url.searchParams.set(key, b64encoded);
+            } else {
+                url.searchParams.delete(key);
+            }
 
             setSearchParams(url.searchParams, { replace: true });
         },
