@@ -1,0 +1,62 @@
+name: Continuous Deployment
+
+# Ensures that only one workflow per branch will run at a time.
+concurrency:
+    group: ${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: true
+
+on:
+    push:
+        branches:
+            - main
+
+env:
+    CI: 1
+    NODE_VERSION: 16
+
+jobs:
+    build-and-deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout default branch
+              uses: actions/checkout@v3
+
+            - name: Use Node ${{ env.NODE_VERSION }}
+              uses: actions/setup-node@v3
+              with:
+                  node-version: ${{ env.NODE_VERSION }}
+
+            - name: Use pnpm
+              uses: pnpm/action-setup@v2.2.2
+              with:
+                  version: latest
+                  run_install: false
+
+            - name: Get pnpm store directory
+              id: pnpm-cache
+              run: echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+
+            - name: Setup pnpm cache
+              uses: actions/cache@v3
+              with:
+                  path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+                  key: pnpm-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
+                  restore-keys: pnpm-${{ runner.os }}-
+
+            - name: Install dependencies
+              run: pnpm install --frozen-lockfile
+
+            - name: Lint code
+              run: pnpm lint
+
+            - name: Build
+              run: pnpm build
+
+            - name: Deploy to GitHub Pages
+              uses: peaceiris/actions-gh-pages@v3
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  publish_dir: ./dist
+                  force_orphan: true
+                  cname: guideline-block-preview.alev.cloud
