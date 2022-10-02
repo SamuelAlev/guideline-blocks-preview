@@ -36,7 +36,7 @@ export const Block: FC<BlockProps> = ({ js, css }) => {
         };
     }, [LoadedBlock, settings, isEditing]);
 
-    useEffect(() => setSettingsStructure(settingsStructure), [settingsStructure]);
+    useEffect(() => setSettingsStructure(settingsStructure), [setSettingsStructure, settingsStructure]);
 
     return (
         <>
