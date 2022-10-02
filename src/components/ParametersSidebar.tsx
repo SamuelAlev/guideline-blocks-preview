@@ -15,8 +15,8 @@ export const ParametersSidebar: FC<ParametersSidebarProps> = ({ onDataChange, on
     const [cssPath, setCssPath] = useState(data.cssPath);
 
     useEffect(() => {
-        setJsPath(data.jsPath);
-        setCssPath(data.cssPath);
+        setJsPath(data.jsPath ?? '');
+        setCssPath(data.cssPath ?? '');
     }, [data]);
 
     const handleJsPathChange = (value: string) => {
@@ -35,8 +35,8 @@ export const ParametersSidebar: FC<ParametersSidebarProps> = ({ onDataChange, on
                 <div className="flex gap-2 items-center">
                     <h1 className="flex-grow text-sm font-mono font-bold">Block Data</h1>
                 </div>
-                <Input placeholder=".js file path" value={jsPath} onChange={handleJsPathChange} />
-                <Input placeholder=".css file path" value={cssPath} onChange={handleCssPathChange} />
+                <Input placeholder=".js file name" value={jsPath} onChange={handleJsPathChange} />
+                <Input placeholder=".css file name" value={cssPath} onChange={handleCssPathChange} />
             </div>
             <div className="flex flex-col gap-4">
                 <BlockSettings onChange={onSettingsChange} />

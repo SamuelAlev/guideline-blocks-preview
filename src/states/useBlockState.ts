@@ -14,7 +14,7 @@ type BlockState = {
     settingsStructure: Record<string, unknown>;
     setSettingsStructure(newSettingsStructure: Record<string, unknown>): void;
     data: BlockData;
-    setData(value: Partial<BlockData>): void;
+    setData(value: BlockData): void;
 };
 
 export const useBlockState = create<BlockState>()((set) => ({
@@ -35,6 +35,6 @@ export const useBlockState = create<BlockState>()((set) => ({
         cssPath: '',
     },
     setData(value) {
-        set((state) => ({ data: { ...state.data, ...value } }));
+        set(() => ({ data: value }));
     },
 }));

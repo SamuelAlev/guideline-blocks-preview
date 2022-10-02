@@ -15,7 +15,7 @@ export const Root = () => {
     const { data, settings } = useDecodeUrl(searchParams);
     useEffect(() => {
         try {
-            setData(JSON.parse(data));
+            setData(JSON.parse(data || '{}'));
         } catch {}
     }, [data, setData]);
     useEffect(() => setSettings(settings), [settings, setSettings]);
