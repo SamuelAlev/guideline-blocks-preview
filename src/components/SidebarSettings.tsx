@@ -11,7 +11,7 @@ type SidebarSettingsProps = {
     onChange(value: string): void;
 };
 
-export const SidebarSettings: FC<SidebarSettingsProps> = ({ onChange }) => {
+export const SidebarSettings: FC<SidebarSettingsProps> = ({}) => {
     const { settingsStructure } = useBlockState();
 
     return (
