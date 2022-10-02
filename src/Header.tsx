@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 import { Container } from './components';
 import { merge } from './utils';
+import faviconUrl from './img/frontify.svg';
 
 type HeaderProps = {
     showShadow?: boolean;
@@ -19,7 +20,7 @@ export const Header: FC<HeaderProps> = ({ showShadow }) => {
             <Container>
                 <div className="flex px-4">
                     <div className="flex-grow flex gap-4 items-center">
-                        <img className="h-5 w-5" src="/frontify.svg" alt="Frontify nook logo" />
+                        <img className="h-5 w-5" src={faviconUrl} alt="Frontify nook logo" />
                         <div className="flex gap-1 items-center justify-center">
                             <span className="text-gray-5/50 hidden md:block">Developer Resources</span>
                             <div className="i-octicon-chevron-right-24 text-gray-5/50 text-xl hidden md:block" />
