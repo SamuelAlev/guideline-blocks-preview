@@ -21,7 +21,6 @@ export const useBlockResources = (jsPath: string, cssPath?: string) => {
     const loadBlockScript = useCallback((path: string) => {
         return new Promise<void>((resolve, reject) => {
             const scriptElement = document.createElement('script');
-            console.log(`${FRONTIFY_ARTIFACT_DOMAIN}/${path}`);
             scriptElement.setAttribute('src', `${FRONTIFY_ARTIFACT_DOMAIN}/${path}`);
             scriptElement.setAttribute('data-block-script', '');
 
