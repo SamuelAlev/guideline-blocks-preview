@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 
 import { useBlockState } from '../states';
 import { isMac, merge } from '../utils';
+import { useSetEditingShortcut } from '../hooks';
 
 export const ViewEditToggle = () => {
     const { isEditing, setIsEditing } = useBlockState();
@@ -9,6 +10,8 @@ export const ViewEditToggle = () => {
     useEffect(() => {
         document.body.classList[isEditing ? 'add' : 'remove']('editor-enabled');
     }, [isEditing]);
+
+    useSetEditingShortcut();
 
     return (
         <div className="flex gap-2 items-center justify-center">

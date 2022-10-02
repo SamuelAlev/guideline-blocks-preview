@@ -3,11 +3,8 @@ import { useSearchParams } from 'react-router-dom';
 import { bytesToBase64 } from 'byte-base64';
 import brotliPromise from 'brotli-wasm';
 
-import { ContentArea } from './ContentArea';
-import { Header } from './Header';
-import { ParametersSidebar } from './ParametersSidebar';
-import { Container } from './components';
-import { useDecodeUrl, useScrollWrapper, useSetEditingShortcut } from './hooks';
+import { Container, ContentArea, Header, ParametersSidebar } from './components';
+import { useDecodeUrl, useScrollWrapper } from './hooks';
 import { useBlockState } from './states';
 
 export const Root = () => {
@@ -16,10 +13,12 @@ export const Root = () => {
 
     const [searchParams, setSearchParams] = useSearchParams();
     const { data, settings } = useDecodeUrl(searchParams);
-    useEffect(() => setData(data), [data, setData]);
+    useEffect(() => {
+        try {
+            setData(JSON.parse(data));
+        } catch {}
+    }, [data, setData]);
     useEffect(() => setSettings(settings), [settings, setSettings]);
-
-    useSetEditingShortcut();
 
     const computeHashAndSetUrl = useCallback(
         async (key: string, value: string) => {

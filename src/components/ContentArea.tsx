@@ -1,22 +1,12 @@
-import { useMemo } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Block } from './Block';
 
-import { ViewEditToggle } from './components';
-import { EXAMPLE_BLOCK_1, EXAMPLE_BLOCK_2, EXAMPLE_BLOCK_3, EXAMPLE_BLOCK_4 } from './constants';
-import { getBlockIdFromJsPath } from './helpers';
-import { useBlockState } from './states';
+import { ViewEditToggle } from '.';
+import { EXAMPLE_BLOCK_1, EXAMPLE_BLOCK_2, EXAMPLE_BLOCK_3, EXAMPLE_BLOCK_4 } from '../constants';
+import { useBlockState } from '../states';
 
-export const ContentArea = ({}) => {
+export const ContentArea = () => {
     const { data } = useBlockState();
-
-    const blockData = useMemo(() => {
-        try {
-            return JSON.parse(data);
-        } catch {
-            return null;
-        }
-    }, [data]);
 
     return (
         <>
@@ -25,12 +15,8 @@ export const ContentArea = ({}) => {
                 <ViewEditToggle />
             </div>
 
-            {blockData?.files?.js ? (
-                <Block
-                    id={getBlockIdFromJsPath(blockData.files.js)}
-                    js={blockData.files.js}
-                    css={blockData.files.css}
-                />
+            {data?.jsPath ? (
+                <Block js={data.jsPath} css={data.cssPath} />
             ) : (
                 <div className="flex flex-col gap-4 pt-6">
                     <span>Add some block data and settings to have a preview.</span>

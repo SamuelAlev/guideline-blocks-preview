@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { Container } from './components';
-import { merge } from './utils';
-import faviconUrl from './img/frontify.svg';
+import { Container } from './Container';
+import { merge } from '../utils';
+import faviconUrl from '../img/frontify.svg';
 
 type HeaderProps = {
     showShadow?: boolean;

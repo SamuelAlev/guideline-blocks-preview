@@ -1,26 +1,20 @@
-import { FC, useMemo } from 'react';
+import { FC, useEffect, useMemo } from 'react';
 import useErrorBoundary from 'use-error-boundary';
 import { withAppBridgeBlockStubs } from '@frontify/app-bridge';
 
-import { useBlockResources } from './hooks';
-import { useBlockState } from './states';
+import { useBlockResources } from '../hooks';
+import { useBlockState } from '../states';
 
 type BlockProps = {
-    id: string;
     js: string;
     css?: string;
 };
 
-export const Block: FC<BlockProps> = ({ id, js, css }) => {
+export const Block: FC<BlockProps> = ({ js, css }) => {
     const { ErrorBoundary, didCatch, error } = useErrorBoundary();
-    const { isEditing, settings } = useBlockState();
+    const { isEditing, settings, setSettingsStructure } = useBlockState();
 
-    const { loading, errors: errorsWhileLoadingResources } = useBlockResources(js, css);
-
-    const LoadedBlock = useMemo(
-        () => !loading && !errorsWhileLoadingResources && window[id as keyof Window]?.block,
-        [id, errorsWhileLoadingResources, loading],
-    );
+    const { errors: errorsWhileLoadingResources, Block: LoadedBlock, settingsStructure } = useBlockResources(js, css);
 
     const BlockWithStubbedAppBridge = useMemo(() => {
         let parsedBlockSettings = {};
@@ -41,6 +35,8 @@ export const Block: FC<BlockProps> = ({ id, js, css }) => {
             );
         };
     }, [LoadedBlock, settings, isEditing]);
+
+    useEffect(() => setSettingsStructure(settingsStructure), [settingsStructure]);
 
     return (
         <>

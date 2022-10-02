@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { base64ToBytes } from 'byte-base64';
 import brotliPromise from 'brotli-wasm';
 
+import { BlockData } from '../states';
+
 type SearchParameters = {
     data: string;
     settings: string;

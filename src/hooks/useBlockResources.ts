@@ -1,10 +1,12 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { FRONTIFY_ARTIFACT_DOMAIN } from '../constants';
+import { getBlockIdFromJsPath } from '../helpers';
 
 export const useBlockResources = (jsPath: string, cssPath?: string) => {
     const [loading, setLoading] = useState(true);
     const [errors, setErrors] = useState<Error | null>(null);
+    const id = getBlockIdFromJsPath(jsPath);
 
     const removeBlockResources = useCallback(() => {
         const scriptElements = document.querySelectorAll(
@@ -19,6 +21,7 @@ export const useBlockResources = (jsPath: string, cssPath?: string) => {
     const loadBlockScript = useCallback((path: string) => {
         return new Promise<void>((resolve, reject) => {
             const scriptElement = document.createElement('script');
+            console.log(`${FRONTIFY_ARTIFACT_DOMAIN}/${path}`);
             scriptElement.setAttribute('src', `${FRONTIFY_ARTIFACT_DOMAIN}/${path}`);
             scriptElement.setAttribute('data-block-script', '');
 
@@ -64,5 +67,11 @@ export const useBlockResources = (jsPath: string, cssPath?: string) => {
         };
     }, [jsPath, cssPath, loadBlockScript, loadBlockStyle, removeBlockResources]);
 
-    return { loading, errors };
+    const Block = useMemo(() => !loading && !errors && window[id as keyof Window]?.block, [id, errors, loading]);
+    const settingsStructure = useMemo(
+        () => !loading && !errors && window[id as keyof Window]?.settings,
+        [id, errors, loading],
+    );
+
+    return { loading, errors, Block, settingsStructure };
 };
