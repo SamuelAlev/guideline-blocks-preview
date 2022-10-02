@@ -34,31 +34,31 @@ export const ContentArea = ({}) => {
             ) : (
                 <div className="flex flex-col gap-4 pt-6">
                     <span>Add some block data and settings to have a preview.</span>
-                    <div className="flex gap-4">
+                    <div className="flex gap-4 overflow-x-auto">
                         <NavLink
                             to={EXAMPLE_BLOCK_1}
-                            className="py-2 px-4 items-center justify-center rounded bg-[#424747] hover:bg-[#2d3232] text-white"
+                            className="py-2 px-4 inline whitespace-nowrap rounded bg-[#424747] hover:bg-[#2d3232] text-white"
                             title="Go to example 1"
                         >
                             Example 1
                         </NavLink>
                         <NavLink
                             to={EXAMPLE_BLOCK_2}
-                            className="py-2 px-4 items-center justify-center rounded bg-[#424747] hover:bg-[#2d3232] text-white"
+                            className="py-2 px-4 inline whitespace-nowrap rounded bg-[#424747] hover:bg-[#2d3232] text-white"
                             title="Go to example 2"
                         >
                             Example 2
                         </NavLink>
                         <NavLink
                             to={EXAMPLE_BLOCK_3}
-                            className="py-2 px-4 items-center justify-center rounded bg-[#424747] hover:bg-[#2d3232] text-white"
+                            className="py-2 px-4 inline whitespace-nowrap rounded bg-[#424747] hover:bg-[#2d3232] text-white"
                             title="Go to example 3"
                         >
                             Example 3
                         </NavLink>
                         <NavLink
                             to={EXAMPLE_BLOCK_4}
-                            className="py-2 px-4 items-center justify-center rounded bg-[#424747] hover:bg-[#2d3232] text-white"
+                            className="py-2 px-4 inline whitespace-nowrap rounded bg-[#424747] hover:bg-[#2d3232] text-white"
                             title="Go to example 4"
                         >
                             Example 4
