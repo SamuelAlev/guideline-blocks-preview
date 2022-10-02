@@ -1,4 +1,4 @@
-import { defineConfig, loadEnv } from 'vite';
+import { defineConfig, loadEnv, splitVendorChunkPlugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import Unocss from 'unocss/vite';
 import presetUno from '@unocss/preset-uno';
@@ -24,8 +24,10 @@ export default defineConfig(({ mode }) => {
         build: {
             minify: true,
             sourcemap: true,
+            assetsInlineLimit: 0,
         },
         plugins: [
+            splitVendorChunkPlugin(),
             react(),
             Unocss({
                 presets: [presetUno(), presetIcons()],

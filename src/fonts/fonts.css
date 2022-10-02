@@ -3,8 +3,8 @@
     font-family: 'Space Grotesk Frontify';
     font-style: normal;
     font-weight: 400;
-    src: url('/fonts/SpaceGroteskFrontify-Regular.woff2') format('woff2'),
-        url('/fonts/SpaceGroteskFrontify-Regular.woff') format('woff');
+    src: url(./SpaceGroteskFrontify-Regular.woff2) format('woff2'),
+        url(./SpaceGroteskFrontify-Regular.woff) format('woff');
 }
 
 @font-face {
@@ -12,8 +12,8 @@
     font-family: 'Space Grotesk Frontify';
     font-style: normal;
     font-weight: 500;
-    src: url('/fonts/SpaceGroteskFrontify-Medium.woff2') format('woff2'),
-        url('/fonts/SpaceGroteskFrontify-Medium.woff') format('woff');
+    src: url(./SpaceGroteskFrontify-Medium.woff2) format('woff2'),
+        url(./SpaceGroteskFrontify-Medium.woff) format('woff');
 }
 
 @font-face {
@@ -21,8 +21,8 @@
     font-family: 'Space Grotesk Frontify';
     font-style: normal;
     font-weight: 600;
-    src: url('/fonts/SpaceGroteskFrontify-SemiBold.woff2') format('woff2'),
-        url('/fonts/SpaceGroteskFrontify-SemiBold.woff') format('woff');
+    src: url(./SpaceGroteskFrontify-SemiBold.woff2) format('woff2'),
+        url(./SpaceGroteskFrontify-SemiBold.woff) format('woff');
 }
 
 @font-face {
@@ -30,26 +30,21 @@
     font-family: 'Space Grotesk Frontify';
     font-style: normal;
     font-weight: 700;
-    src: url('/fonts/SpaceGroteskFrontify-Bold.woff2') format('woff2'),
-        url('/fonts/SpaceGroteskFrontify-Bold.woff') format('woff');
+    src: url(./SpaceGroteskFrontify-Bold.woff2) format('woff2'), url(./SpaceGroteskFrontify-Bold.woff) format('woff');
 }
 
 @font-face {
     font-family: 'Menlo Regular';
     font-style: normal;
     font-weight: normal;
-    src: local('Menlo Regular'), url('/fonts/Menlo-Regular.woff') format('woff');
+    src: local('Menlo Regular'), url(./Menlo-Regular.woff) format('woff');
 }
 
 @font-face {
     font-family: 'redacted';
     font-style: normal;
     font-weight: normal;
-    src: url('/fonts/redacted-script-bold.eot');
-    src: url('/fonts/redacted-script-bold.eot?#iefix') format('embedded-opentype'),
-        url('/fonts/redacted-script-bold.woff2') format('woff2'), url('/fonts/redacted-script-bold.woff') format('woff'),
-        url('/fonts/redacted-script-bold.ttf') format('truetype'),
-        url('/fonts/redacted-script-bold.svg#redacted_scriptbold') format('svg');
+    src: url(./redacted-regular.woff2) format('woff2'), url(./redacted-regular.woff) format('woff');
 }
 
 .font-mono {

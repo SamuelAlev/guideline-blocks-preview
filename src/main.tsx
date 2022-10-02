@@ -2,7 +2,7 @@ import '@unocss/reset/tailwind.css';
 import 'virtual:uno.css';
 import '@frontify/fondue-tokens/styles';
 import '@frontify/fondue/style';
-import './fonts.css';
+import './fonts/fonts.css';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
