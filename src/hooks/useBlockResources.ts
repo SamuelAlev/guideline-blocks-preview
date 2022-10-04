@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
-import { FRONTIFY_ARTIFACT_DOMAIN } from '../constants';
 import { getBlockIdFromJsPath } from '../helpers';
 
 export const useBlockResources = (jsPath: string, cssPath?: string) => {
@@ -20,8 +19,9 @@ export const useBlockResources = (jsPath: string, cssPath?: string) => {
 
     const loadBlockScript = useCallback((path: string) => {
         return new Promise<void>((resolve, reject) => {
+            console.log(path);
             const scriptElement = document.createElement('script');
-            scriptElement.setAttribute('src', `${FRONTIFY_ARTIFACT_DOMAIN}/${path}`);
+            scriptElement.setAttribute('src', path);
             scriptElement.setAttribute('data-block-script', '');
 
             scriptElement.onload = () => resolve();
@@ -35,7 +35,7 @@ export const useBlockResources = (jsPath: string, cssPath?: string) => {
         return new Promise<void>((resolve, reject) => {
             const linkElement = document.createElement('link');
             linkElement.setAttribute('rel', 'stylesheet');
-            linkElement.setAttribute('href', `${FRONTIFY_ARTIFACT_DOMAIN}/${path}`);
+            linkElement.setAttribute('href', path);
             linkElement.setAttribute('data-block-style', '');
 
             linkElement.onload = () => resolve();

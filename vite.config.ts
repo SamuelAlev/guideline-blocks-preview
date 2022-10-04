@@ -4,16 +4,6 @@ import Unocss from 'unocss/vite';
 import presetUno from '@unocss/preset-uno';
 import presetIcons from '@unocss/preset-icons';
 
-const htmlPlugin = (env: ReturnType<typeof loadEnv>) => {
-    return {
-        name: 'html-transform',
-        transformIndexHtml: {
-            enforce: 'pre' as const,
-            transform: (html: string): string => html.replace(/%(.*?)%/g, (match, p1) => env[p1] ?? match),
-        },
-    };
-};
-
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.');
 
@@ -32,7 +22,6 @@ export default defineConfig(({ mode }) => {
             Unocss({
                 presets: [presetUno(), presetIcons()],
             }),
-            htmlPlugin(env),
         ],
     };
 });
