@@ -24,14 +24,14 @@ export const BlockSettings: FC<BlockSettingsProps> = ({ onChange }) => {
                         isAdvancedModeEnabled ? 'bg-[#424747] text-white' : 'hover:bg-[#eaebeb]',
                     ])}
                     onClick={() => setIsAdvancedModeEnabled(!isAdvancedModeEnabled)}
-                    title="Switch to edit mode"
+                    title="Switch to advanced mode"
                 >
                     <div className="i-octicon-gear-16" />
                 </button>
                 <button
                     className="p-2 flex items-center justify-center rounded hover:bg-[#eaebeb]"
                     onClick={() => onChange('')}
-                    title="Switch to edit mode"
+                    title="Reset settings"
                 >
                     <div className="i-octicon-trash-16" />
                 </button>
