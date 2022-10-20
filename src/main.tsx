@@ -4,26 +4,43 @@ import '@frontify/fondue-tokens/styles';
 import '@frontify/fondue/style';
 import './fonts/fonts.css';
 
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 
 window.React = React;
 window.ReactDOM = ReactDOM;
 
-import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
-
-import { Root } from './Root';
+const Root = lazy(() => import('./Root').then((module) => ({ default: module.Root })));
+const Embed = lazy(() => import('./Embed').then((module) => ({ default: module.Embed })));
 
 const RedirectToV1 = () => {
-    const { search } = useLocation();
-    return <Navigate to={`/v1${search}`} replace />;
+    const { search, pathname } = useLocation();
+    return <Navigate to={`/v1${pathname}${search}`} replace />;
 };
 
 ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter>
             <Routes>
-                <Route path="/v1" element={<Root />} />
+                <Route path="/v1">
+                    <Route
+                        index
+                        element={
+                            <Suspense fallback="Loading...">
+                                <Root />
+                            </Suspense>
+                        }
+                    />
+                    <Route
+                        path="embed"
+                        element={
+                            <Suspense fallback="Loading embed...">
+                                <Embed />
+                            </Suspense>
+                        }
+                    />
+                </Route>
                 <Route path="*" element={<RedirectToV1 />} />
             </Routes>
         </BrowserRouter>

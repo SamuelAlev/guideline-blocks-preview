@@ -35,7 +35,7 @@ export const BlockData: FC<BlockDataProps> = ({ onChange }) => {
                 <button
                     className="p-2 flex items-center justify-center rounded hover:bg-[#eaebeb]"
                     onClick={() => onChange('')}
-                    title="Reset"
+                    title="Reset block data"
                 >
                     <div className="i-octicon-trash-16" />
                 </button>

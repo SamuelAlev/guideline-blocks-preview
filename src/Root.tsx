@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useRef } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { NavLink, useSearchParams } from 'react-router-dom';
 import { bytesToBase64 } from 'byte-base64';
 import brotliPromise from 'brotli-wasm';
 
-import { Container, ContentArea, Header, ParametersSidebar } from './components';
+import { Container, ContentArea, Header, ParametersSidebar, ViewEditToggle } from './components';
 import { useDecodeUrl, useScrollWrapper } from './hooks';
 import { useBlockState } from './states';
 
@@ -59,6 +59,18 @@ export const Root = () => {
                             />
                         </aside>
                         <main className="lg:w-8/12 xl:10/12 p-4 lg:pl-6 flex flex-col gap-4">
+                            <div className="flex items-center">
+                                <h1 className="text-lg font-mono font-bold mr-4">Block Rendering</h1>
+                                <ViewEditToggle />
+                                <NavLink
+                                    to={`/embed?${searchParams.toString()}`}
+                                    title="Open block embed"
+                                    className="ml-2 p-2 flex items-center justify-center rounded hover:bg-[#eaebeb]"
+                                >
+                                    <div className="i-octicon-link-external-16" />
+                                </NavLink>
+                            </div>
+
                             <ContentArea />
                         </main>
                     </div>

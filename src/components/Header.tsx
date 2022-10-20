@@ -35,6 +35,7 @@ export const Header: FC<HeaderProps> = ({ showShadow }) => {
                         target="_blank"
                         rel="noreferrer"
                         href="https://github.com/SamuelAlev/guideline-block-preview"
+                        title="Go to the GitHub repository"
                     ></a>
                 </div>
             </Container>

@@ -19,7 +19,6 @@ export const useBlockResources = (jsPath: string, cssPath?: string) => {
 
     const loadBlockScript = useCallback((path: string) => {
         return new Promise<void>((resolve, reject) => {
-            console.log(path);
             const scriptElement = document.createElement('script');
             scriptElement.setAttribute('src', path);
             scriptElement.setAttribute('data-block-script', '');
