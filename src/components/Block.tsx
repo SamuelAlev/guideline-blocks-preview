@@ -38,18 +38,14 @@ export const Block: FC<BlockProps> = ({ js, css }) => {
 
     useEffect(() => setSettingsStructure(settingsStructure), [setSettingsStructure, settingsStructure]);
 
-    return (
-        <>
-            {didCatch || errorsWhileLoadingResources ? (
-                <div className="flex flex-col gap-2 text-red-8">
-                    <span className="text-xl">An error has been caught while rendering the block</span>
-                    <span>{error?.message ?? errorsWhileLoadingResources?.message ?? 'No error message received'}</span>
-                </div>
-            ) : (
-                <ErrorBoundary>
-                    <BlockWithStubbedAppBridge />
-                </ErrorBoundary>
-            )}
-        </>
+    return didCatch || errorsWhileLoadingResources ? (
+        <div className="flex flex-col gap-2 text-red-8">
+            <span className="text-xl">An error has been caught while rendering the block</span>
+            <span>{error?.message ?? errorsWhileLoadingResources?.message ?? 'No error message received'}</span>
+        </div>
+    ) : (
+        <ErrorBoundary>
+            <BlockWithStubbedAppBridge />
+        </ErrorBoundary>
     );
 };

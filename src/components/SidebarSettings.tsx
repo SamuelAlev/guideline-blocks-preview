@@ -1,4 +1,4 @@
-import { Accordion, AccordionItem, Breadcrumbs, FieldsetHeaderType } from '@frontify/fondue';
+import { Accordion, AccordionItem, Breadcrumbs } from '@frontify/fondue';
 import { FC } from 'react';
 
 import { useBlockState } from '../states';
