@@ -26,7 +26,6 @@ export const SidebarSettings: FC<SidebarSettingsProps> = ({}) => {
                         key={sidebarSection}
                         header={{
                             children: capitalize(sidebarSection),
-                            type: FieldsetHeaderType.Accordion,
                             active: index === 0,
                         }}
                     >
