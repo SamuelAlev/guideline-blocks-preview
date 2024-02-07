@@ -3,8 +3,8 @@ import { useLoaderData, useSearchParams } from 'react-router-dom';
 
 import { ContentArea } from './components/ContentArea';
 import { ViewEditToggle } from './components/ViewEditToggle';
-import { useAppStore } from './states/useAppState';
 import { type LoaderData, type rootLoader } from './helpers/loader';
+import { useAppStore } from './states/useAppState';
 
 export const Embed = () => {
     const { setState, setCustomFields } = useAppStore();

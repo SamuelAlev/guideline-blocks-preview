@@ -1,6 +1,6 @@
 import { LoaderFunction } from 'react-router-dom';
-import { decompressBrotliData } from '../utils/brotli';
 import { AppCustomFields, AppState } from '../states/useAppState';
+import { decompressBrotliData } from '../utils/brotli';
 
 export type LoaderData<TLoaderFn extends LoaderFunction> = Awaited<ReturnType<TLoaderFn>> extends Response | infer D ? D : never;
 

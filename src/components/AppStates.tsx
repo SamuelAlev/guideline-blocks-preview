@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 
-import { Textarea } from './Textarea';
 import { AppCustomFields, AppState as AppStateType, appBridgeModeToLabel, useAppStore } from '../states/useAppState';
+import { Textarea } from './Textarea';
 
 type AppStateProps = {
     onChange(value: AppStateType): void;
