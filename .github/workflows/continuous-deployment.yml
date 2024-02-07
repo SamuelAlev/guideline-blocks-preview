@@ -11,8 +11,7 @@ on:
             - main
 
 env:
-    NODE_VERSION: 18
-    DOMAIN: guideline-block-preview.alev.cloud
+    DOMAIN: frontify-app-preview.alev.dev
 
 jobs:
     build-and-deploy:
@@ -28,17 +27,17 @@ jobs:
                   version: latest
                   run_install: false
 
-            - name: Use Node ${{ env.NODE_VERSION }}
+            - name: Use Node
               uses: actions/setup-node@v3
               with:
-                  node-version: ${{ env.NODE_VERSION }}
+                  node-version-file: '.nvmrc'
                   cache: 'pnpm'
 
             - name: Install dependencies
               run: pnpm install --frozen-lockfile
 
-            - name: Lint code
-              run: pnpm lint
+            - name: Format code
+              run: pnpm format
 
             - name: Build
               run: pnpm build

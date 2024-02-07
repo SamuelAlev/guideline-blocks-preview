@@ -1,21 +1,21 @@
 import { useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useLoaderData, useSearchParams } from 'react-router-dom';
 
-import { ContentArea, ViewEditToggle } from './components';
-import { useDecodeUrl } from './hooks';
-import { useBlockState } from './states';
+import { ContentArea } from './components/ContentArea';
+import { ViewEditToggle } from './components/ViewEditToggle';
+import { useAppStore } from './states/useAppState';
+import { type LoaderData, type rootLoader } from './helpers/loader';
 
 export const Embed = () => {
-    const { setSettings, setData } = useBlockState();
+    const { setState, setCustomFields } = useAppStore();
 
+    const decodedSearchParameters = useLoaderData() as LoaderData<typeof rootLoader>;
     const [searchParams] = useSearchParams();
-    const { data, settings } = useDecodeUrl(searchParams);
+
     useEffect(() => {
-        try {
-            setData(JSON.parse(data || '{}'));
-        } catch {}
-    }, [data, setData]);
-    useEffect(() => setSettings(settings), [settings, setSettings]);
+        setCustomFields(decodedSearchParameters.customFields);
+        setState(decodedSearchParameters.state);
+    }, [decodedSearchParameters, setCustomFields, setState]);
 
     return (
         <div className="h-screen select-none flex flex-col">

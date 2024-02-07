@@ -1,12 +1,15 @@
-import '@unocss/reset/tailwind.css';
-import 'virtual:uno.css';
 import '@frontify/fondue-tokens/styles';
 import '@frontify/fondue/style';
+import '@unocss/reset/tailwind.css';
 import './fonts/fonts.css';
+import 'virtual:uno.css';
 
-import React, { Suspense, lazy } from 'react';
+import React, { StrictMode, Suspense, lazy } from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import { createRoot } from 'react-dom/client';
+import { RouterProvider, createBrowserRouter, redirect } from 'react-router-dom';
+
+import { rootLoader } from './helpers/loader';
 
 window.React = React;
 window.ReactDOM = ReactDOM;
@@ -14,36 +17,45 @@ window.ReactDOM = ReactDOM;
 const Root = lazy(() => import('./Root').then((module) => ({ default: module.Root })));
 const Embed = lazy(() => import('./Embed').then((module) => ({ default: module.Embed })));
 
-const RedirectToV1 = () => {
-    const { search, pathname } = useLocation();
-    return <Navigate to={`/v1${pathname}${search}`} replace />;
-};
+const containerElement = document.getElementById('root');
+if (!containerElement) {
+    throw new Error('Root element not found');
+}
 
-ReactDOM.render(
-    <React.StrictMode>
-        <BrowserRouter>
-            <Routes>
-                <Route path="/v1">
-                    <Route
-                        index
-                        element={
-                            <Suspense fallback="Loading...">
-                                <Root />
-                            </Suspense>
-                        }
-                    />
-                    <Route
-                        path="embed"
-                        element={
-                            <Suspense fallback="Loading embed...">
-                                <Embed />
-                            </Suspense>
-                        }
-                    />
-                </Route>
-                <Route path="*" element={<RedirectToV1 />} />
-            </Routes>
-        </BrowserRouter>
-    </React.StrictMode>,
-    document.getElementById('root'),
+const root = createRoot(containerElement);
+
+const router = createBrowserRouter([
+    {
+        path: '/v1',
+        children: [
+            {
+                index: true,
+                loader: rootLoader,
+                element: (
+                    <Suspense fallback="Loading...">
+                        <Root />
+                    </Suspense>
+                ),
+            },
+            {
+                path: 'embed',
+                loader: rootLoader,
+                element: (
+                    <Suspense fallback="Loading embed...">
+                        <Embed />
+                    </Suspense>
+                ),
+            },
+        ],
+    },
+    {
+        path: '*',
+        loader: () => redirect('/v1'),
+    },
+]);
+
+root.render(
+    <StrictMode>
+        <RouterProvider router={router} />
+    </StrictMode>,
 );

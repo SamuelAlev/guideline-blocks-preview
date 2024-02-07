@@ -1,5 +1,5 @@
 {
-    "name": "guideline-blocks-preview",
+    "name": "frontify-app-preview",
     "private": true,
     "version": "0.0.0",
     "type": "module",
@@ -7,36 +7,34 @@
     "scripts": {
         "dev": "vite",
         "build": "tsc && vite build",
-        "lint": "eslint src",
-        "lint:fix": "eslint --fix src"
+        "format": "biome ci ."
     },
     "dependencies": {
-        "@frontify/app-bridge": "3.0.0-beta.78",
-        "@frontify/fondue": "12.0.0-beta.272",
-        "@frontify/fondue-tokens": "^3.3.0",
-        "brotli-wasm": "^1.3.1",
+        "@frontify/app-bridge": "^3.1.0",
+        "@frontify/fondue": "12.0.0-beta.400",
+        "@frontify/fondue-tokens": "^3.4.0",
+        "@radix-ui/react-tabs": "^1.0.4",
+        "brotli-wasm": "^2.0.1",
         "byte-base64": "^1.1.0",
+        "framer-motion": "^11.0.3",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
-        "react-router-dom": "^6.14.1",
-        "react-textarea-autosize": "^8.5.2",
+        "react-router-dom": "^6.22.0",
+        "react-textarea-autosize": "^8.5.3",
         "use-error-boundary": "^2.0.6",
-        "zustand": "^4.3.9"
+        "zustand": "^4.5.0"
     },
     "devDependencies": {
-        "@frontify/eslint-config-react": "^0.15.8",
-        "@iconify-json/octicon": "^1.1.44",
-        "@types/react": "^18.2.14",
-        "@types/react-dom": "^18.2.6",
-        "@unocss/preset-icons": "^0.53.4",
-        "@unocss/preset-uno": "^0.53.4",
-        "@unocss/reset": "^0.53.4",
-        "@vitejs/plugin-react": "^4.0.1",
-        "eslint": "^8.44.0",
-        "prettier": "^2.8.8",
-        "typescript": "^5.1.6",
-        "unocss": "^0.53.4",
-        "vite": "^4.4.0",
-        "vite-plugin-html": "^3.2.0"
+        "@biomejs/biome": "^1.5.3",
+        "@iconify-json/octicon": "^1.1.52",
+        "@types/react": "^18.2.55",
+        "@types/react-dom": "^18.2.19",
+        "@unocss/preset-icons": "^0.58.5",
+        "@unocss/preset-uno": "^0.58.5",
+        "@unocss/reset": "^0.58.5",
+        "@vitejs/plugin-react": "^4.2.1",
+        "typescript": "^5.3.3",
+        "unocss": "^0.58.5",
+        "vite": "^5.0.12"
     }
 }

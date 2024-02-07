@@ -15,7 +15,7 @@ export const Input: FC<InputProps> = ({ placeholder, value, onChange }) => {
         if (input) {
             input.setSelectionRange(cursor, cursor);
         }
-    }, [ref, cursor, value]);
+    }, [cursor]);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         event.target.selectionStart && setCursor(event.target.selectionStart);

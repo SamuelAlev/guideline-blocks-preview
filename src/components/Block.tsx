@@ -1,9 +1,9 @@
+import { withAppBridgeBlockStubs } from '@frontify/app-bridge';
 import { FC, useEffect, useMemo } from 'react';
 import useErrorBoundary from 'use-error-boundary';
-import { withAppBridgeBlockStubs } from '@frontify/app-bridge';
 
-import { useBlockResources } from '../hooks';
-import { useBlockState } from '../states';
+import { useAppResources } from '../hooks/useAppResources';
+import { useAppStore } from '../states/useAppState';
 
 type BlockProps = {
     js: string;
@@ -12,29 +12,26 @@ type BlockProps = {
 
 export const Block: FC<BlockProps> = ({ js, css }) => {
     const { ErrorBoundary, didCatch, error } = useErrorBoundary();
-    const { isEditing, settings, setSettingsStructure } = useBlockState();
+    const { isEditing, state, setSettingsStructure } = useAppStore();
 
-    const { errors: errorsWhileLoadingResources, Block: LoadedBlock, settingsStructure } = useBlockResources(js, css);
+    const { errors: errorsWhileLoadingResources, App: LoadedBlock, settingsStructure } = useAppResources('block', js, css);
 
     const BlockWithStubbedAppBridge = useMemo(() => {
-        let parsedBlockSettings = {};
-        try {
-            parsedBlockSettings = JSON.parse(settings);
-        } catch {}
-
-        const [BlockWithStubs, appBridge] = withAppBridgeBlockStubs(LoadedBlock || (() => <div></div>), {
-            blockSettings: parsedBlockSettings,
+        const [BlockWithStubs, appBridge] = withAppBridgeBlockStubs(LoadedBlock || (() => <div />), {
+            blockSettings: state.settings,
+            // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+            blockAssets: state.assets as any,
             editorState: isEditing,
         });
 
         return function BlockWrapper() {
             return (
-                <div data-block={appBridge.getBlockId()} className="block">
+                <div data-block={appBridge.context('blockId').get()} className="block">
                     <BlockWithStubs />
                 </div>
             );
         };
-    }, [LoadedBlock, settings, isEditing]);
+    }, [LoadedBlock, state, isEditing]);
 
     useEffect(() => setSettingsStructure(settingsStructure), [setSettingsStructure, settingsStructure]);
 

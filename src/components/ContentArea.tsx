@@ -1,47 +1,33 @@
 import { NavLink } from 'react-router-dom';
 import { Block } from './Block';
 
-import { EXAMPLE_BLOCK_1, EXAMPLE_BLOCK_2, EXAMPLE_BLOCK_3, EXAMPLE_BLOCK_4 } from '../constants';
-import { useBlockState } from '../states';
+import { EXAMPLE_BLOCK } from '../constants';
+import { appBridgeModeToLabel, useAppStore } from '../states/useAppState';
 
 export const ContentArea = () => {
-    const { data } = useBlockState();
+    const { customFields } = useAppStore();
 
-    return data?.jsPath ? (
-        <Block js={data.jsPath} css={data.cssPath} />
+    return customFields?.jsPath ? (
+        <Block js={customFields.jsPath} css={customFields.cssPath} />
     ) : (
-        <div className="flex flex-col gap-4 pt-6">
-            <span>Add some block data and settings to have a preview.</span>
-            <div className="flex gap-4 overflow-x-auto">
-                <NavLink
-                    to={EXAMPLE_BLOCK_1}
-                    className="py-2 px-4 inline whitespace-nowrap rounded bg-[#424747] hover:bg-[#2d3232] text-white"
-                    title="Go to example 1"
-                >
-                    Example 1
-                </NavLink>
-                <NavLink
-                    to={EXAMPLE_BLOCK_2}
-                    className="py-2 px-4 inline whitespace-nowrap rounded bg-[#424747] hover:bg-[#2d3232] text-white"
-                    title="Go to example 2"
-                >
-                    Example 2
-                </NavLink>
-                <NavLink
-                    to={EXAMPLE_BLOCK_3}
-                    className="py-2 px-4 inline whitespace-nowrap rounded bg-[#424747] hover:bg-[#2d3232] text-white"
-                    title="Go to example 3"
-                >
-                    Example 3
-                </NavLink>
-                <NavLink
-                    to={EXAMPLE_BLOCK_4}
-                    className="py-2 px-4 inline whitespace-nowrap rounded bg-[#424747] hover:bg-[#2d3232] text-white"
-                    title="Go to example 4"
-                >
-                    Example 4
-                </NavLink>
-            </div>
+        <div className="flex flex-col gap-4">
+            <span>Add some {appBridgeModeToLabel[customFields.appBridgeMode]} data and state to have a preview.</span>
+
+            {customFields.appBridgeMode === 'block' ? (
+                <div className="flex gap-4 overflow-x-auto">
+                    <NavLink to={EXAMPLE_BLOCK} className="py-2 px-4 inline whitespace-nowrap rounded bg-[#424747] hover:bg-[#2d3232] text-white" title="Go to example">
+                        Example
+                    </NavLink>
+                </div>
+            ) : null}
+
+            {customFields.appBridgeMode === 'theme' ? (
+                <div className="flex gap-4 overflow-x-auto">
+                    <NavLink to="#" className="py-2 px-4 inline whitespace-nowrap rounded bg-[#424747] hover:bg-[#2d3232] text-white" title="Go to example">
+                        Example (soon)
+                    </NavLink>
+                </div>
+            ) : null}
         </div>
     );
 };
