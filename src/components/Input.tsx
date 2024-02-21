@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useEffect, useRef, useState } from 'react';
+import { type ChangeEvent, type FC, useEffect, useRef, useState } from 'react';
 
 type InputProps = {
     placeholder?: string;

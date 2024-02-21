@@ -1,11 +1,11 @@
-import { useEffect } from 'react';
+import { type FC, useEffect } from 'react';
 
 import { useSetEditingShortcut } from '../hooks/useSetEditingShortcut';
 import { useAppStore } from '../states/useAppState';
 import { isMac } from '../utils/isMac';
 import { merge } from '../utils/merge';
 
-export const ViewEditToggle = () => {
+export const ViewEditToggle: FC = () => {
     const { isEditing, setIsEditing } = useAppStore();
 
     useEffect(() => {

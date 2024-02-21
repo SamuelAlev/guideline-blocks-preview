@@ -1,7 +1,7 @@
 import { SegmentedControls } from '@frontify/fondue';
-import { FC, useEffect, useState } from 'react';
+import { type FC } from 'react';
 
-import { AppCustomFields, useAppStore } from '../states/useAppState';
+import { type AppCustomFields, useAppStore } from '../states/useAppState';
 import { Input } from './Input';
 
 type AppPanelProps = {

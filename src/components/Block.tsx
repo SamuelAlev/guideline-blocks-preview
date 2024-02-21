@@ -1,5 +1,5 @@
-import { withAppBridgeBlockStubs } from '@frontify/app-bridge';
-import { FC, useEffect, useMemo } from 'react';
+import { withAppBridgeBlockStubs } from '@frontify/app-bridge/testing';
+import { type FC, useEffect, useMemo } from 'react';
 import useErrorBoundary from 'use-error-boundary';
 
 import { useAppResources } from '../hooks/useAppResources';

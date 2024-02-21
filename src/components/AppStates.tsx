@@ -1,6 +1,6 @@
-import { FC, useState } from 'react';
+import { type FC, useState } from 'react';
 
-import { AppCustomFields, AppState as AppStateType, appBridgeModeToLabel, useAppStore } from '../states/useAppState';
+import { AppCustomFields, type AppState as AppStateType, appBridgeModeToLabel, useAppStore } from '../states/useAppState';
 import { Textarea } from './Textarea';
 
 type AppStateProps = {
