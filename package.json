@@ -10,24 +10,24 @@
         "format": "biome ci ."
     },
     "dependencies": {
-        "@frontify/app-bridge": "^3.1.0",
-        "@frontify/fondue": "12.0.0-beta.400",
+        "@frontify/app-bridge": "^3.3.2",
+        "@frontify/fondue": "12.0.0-beta.404",
         "@frontify/fondue-tokens": "^3.4.0",
         "@radix-ui/react-tabs": "^1.0.4",
         "brotli-wasm": "^2.0.1",
         "byte-base64": "^1.1.0",
-        "framer-motion": "^11.0.3",
+        "framer-motion": "^11.0.5",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
-        "react-router-dom": "^6.22.0",
+        "react-router-dom": "^6.22.1",
         "react-textarea-autosize": "^8.5.3",
         "use-error-boundary": "^2.0.6",
-        "zustand": "^4.5.0"
+        "zustand": "^4.5.1"
     },
     "devDependencies": {
         "@biomejs/biome": "^1.5.3",
         "@iconify-json/octicon": "^1.1.52",
-        "@types/react": "^18.2.55",
+        "@types/react": "^18.2.57",
         "@types/react-dom": "^18.2.19",
         "@unocss/preset-icons": "^0.58.5",
         "@unocss/preset-uno": "^0.58.5",
@@ -35,6 +35,6 @@
         "@vitejs/plugin-react": "^4.2.1",
         "typescript": "^5.3.3",
         "unocss": "^0.58.5",
-        "vite": "^5.0.12"
+        "vite": "^5.1.3"
     }
 }
