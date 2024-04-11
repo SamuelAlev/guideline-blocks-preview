@@ -72,7 +72,7 @@ devDependencies:
     version: 4.2.1(vite@5.2.7)
   typescript:
     specifier: ^5.4.3
-    version: 5.4.3
+    version: 5.4.4
   unocss:
     specifier: ^0.58.6
     version: 0.58.6(postcss@8.4.38)(vite@5.2.7)
@@ -5301,7 +5301,7 @@ packages:
       '@sinonjs/fake-timers': 11.2.2
       '@sinonjs/text-encoding': 0.7.2
       just-extend: 6.2.0
-      path-to-regexp: 6.2.1
+      path-to-regexp: 6.2.2
     dev: false
 
   /node-fetch-native@1.6.2:
@@ -5398,8 +5398,8 @@ packages:
       minipass: 7.0.4
     dev: false
 
-  /path-to-regexp@6.2.1:
-    resolution: {integrity: sha512-JLyh7xT1kizaEvcaXOQwOc2/Yhw6KZOvPf1S8401UyLk86CU79LN3vl7ztXGm/pZ+YjoyAJ4rxmHwbkBXJX+yw==}
+  /path-to-regexp@6.2.2:
+    resolution: {integrity: sha512-GQX3SSMokngb36+whdpRXE+3f9V8UzyAorlYvOGx87ufGHehNTn5lCxrKtLyZ4Yl/wEKnNnr98ZzOwwDZV5ogw==}
     dev: false
 
   /pathe@1.1.2:
@@ -6240,8 +6240,8 @@ packages:
     engines: {node: '>=16'}
     dev: false
 
-  /typescript@5.4.3:
-    resolution: {integrity: sha512-KrPd3PKaCLr78MalgiwJnA25Nm8HAmdwN3mYUYZgG/wizIo9EainNVQI9/yDavtVFRN2h3k8uf3GLHuhDMgEHg==}
+  /typescript@5.4.4:
+    resolution: {integrity: sha512-dGE2Vv8cpVvw28v8HCPqyb08EzbBURxDpuhJvTrusShUfGnhHBafDsLdS1EhhxyL6BJQE+2cT3dDPAv+MQ6oLw==}
     engines: {node: '>=14.17'}
     hasBin: true
     dev: true
