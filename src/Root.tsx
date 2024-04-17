@@ -4,9 +4,9 @@ import { NavLink, useLoaderData, useSearchParams } from 'react-router-dom';
 import { ContentArea } from './components/ContentArea';
 import { Sidebar } from './components/Sidebar';
 import { ViewEditToggle } from './components/ViewEditToggle';
-import { type LoaderData, type rootLoader } from './helpers/loader';
+import type { LoaderData, rootLoader } from './helpers/loader';
 import frontifyNookLogo from './img/frontify.svg';
-import { AppCustomFields, AppState, appBridgeModeToLabel, useAppStore } from './states/useAppState';
+import { type AppCustomFields, type AppState, appBridgeModeToLabel, useAppStore } from './states/useAppState';
 import { compressBrotliData } from './utils/brotli';
 
 export const Root = () => {

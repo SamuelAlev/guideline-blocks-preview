@@ -1,8 +1,8 @@
-import '@frontify/fondue/tokens/styles';
+import 'virtual:uno.css';
 import '@frontify/fondue/style';
+import '@frontify/fondue/tokens/styles';
 import '@unocss/reset/tailwind.css';
 import './fonts/fonts.css';
-import 'virtual:uno.css';
 
 import React, { StrictMode, Suspense, lazy } from 'react';
 import ReactDOM from 'react-dom';

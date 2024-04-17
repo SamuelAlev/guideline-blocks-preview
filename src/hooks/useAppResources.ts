@@ -63,7 +63,7 @@ export const useAppResources = (mode: 'block' | 'theme', jsPath: string, cssPath
         };
     }, [jsPath, cssPath, loadAppScript, loadAppStyle, removeAppResources]);
 
-    const App = useMemo(() => !loading && !errors && window[id as keyof Window]?.[mode], [loading, errors, id, mode, window[id as keyof Window]?.[mode]]);
+    const App = useMemo(() => !loading && !errors && window[id as keyof Window]?.[mode], [loading, errors, id, mode]);
     const settingsStructure = useMemo(() => !loading && !errors && window[id as keyof Window]?.settings, [id, errors, loading]);
 
     return { loading, errors, App, settingsStructure };

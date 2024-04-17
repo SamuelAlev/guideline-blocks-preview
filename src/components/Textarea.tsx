@@ -1,4 +1,4 @@
-import { type ChangeEvent, type FC } from 'react';
+import type { ChangeEvent, FC } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 
 type TextareaProps = {

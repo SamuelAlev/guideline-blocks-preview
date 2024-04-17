@@ -1,5 +1,5 @@
 import { SegmentedControls } from '@frontify/fondue';
-import { type FC } from 'react';
+import type { FC } from 'react';
 
 import { type AppCustomFields, useAppStore } from '../states/useAppState';
 import { Input } from './Input';

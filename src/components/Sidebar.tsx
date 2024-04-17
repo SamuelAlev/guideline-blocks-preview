@@ -2,7 +2,7 @@ import * as Tabs from '@radix-ui/react-tabs';
 import { AnimatePresence, motion } from 'framer-motion';
 import { type FC, type MouseEvent, useCallback, useMemo, useRef, useState } from 'react';
 
-import { type AppCustomFields, type AppState as AppStateType } from '../states/useAppState';
+import type { AppCustomFields, AppState as AppStateType } from '../states/useAppState';
 import { AppPanel } from './AppPanel';
 import { AppState } from './AppStates';
 

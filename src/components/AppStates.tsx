@@ -1,6 +1,6 @@
-import { type FC, useState } from 'react';
+import { type FC, Fragment, useState } from 'react';
 
-import { AppCustomFields, type AppState as AppStateType, appBridgeModeToLabel, useAppStore } from '../states/useAppState';
+import { type AppCustomFields, type AppState as AppStateType, appBridgeModeToLabel, useAppStore } from '../states/useAppState';
 import { Textarea } from './Textarea';
 
 type AppStateProps = {
@@ -34,7 +34,7 @@ export const AppState: FC<AppStateProps> = ({ onChange }) => {
                 };
 
                 return (
-                    <>
+                    <Fragment key={key}>
                         <div className="flex gap-2 items-center h-8">
                             <h1 className="flex-grow text-sm font-mono font-bold">
                                 {appBridgeModeToLabel[customFields.appBridgeMode]} {key}
@@ -51,7 +51,7 @@ export const AppState: FC<AppStateProps> = ({ onChange }) => {
                         </div>
 
                         <Textarea value={value} defaultValue={JSON.stringify(state[key], null, 4)} placeholder="{}" onChange={setValue} onBlur={handleBlur} />
-                    </>
+                    </Fragment>
                 );
             })}
         </>

@@ -3,7 +3,7 @@ import { useLoaderData, useSearchParams } from 'react-router-dom';
 
 import { ContentArea } from './components/ContentArea';
 import { ViewEditToggle } from './components/ViewEditToggle';
-import { type LoaderData, type rootLoader } from './helpers/loader';
+import type { LoaderData, rootLoader } from './helpers/loader';
 import { useAppStore } from './states/useAppState';
 
 export const Embed = () => {

@@ -1,1 +1,1 @@
-export const isMac = navigator.platform.match(/(mac|iphone|ipod|ipad)/i) ? true : false;
+export const isMac = !!navigator.platform.match(/(mac|iphone|ipod|ipad)/i);
