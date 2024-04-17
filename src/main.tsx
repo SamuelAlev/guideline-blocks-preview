@@ -1,4 +1,4 @@
-import '@frontify/fondue-tokens/styles';
+import '@frontify/fondue/tokens/styles';
 import '@frontify/fondue/style';
 import '@unocss/reset/tailwind.css';
 import './fonts/fonts.css';
