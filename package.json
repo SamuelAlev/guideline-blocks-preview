@@ -11,7 +11,7 @@
     },
     "dependencies": {
         "@frontify/app-bridge": "^3.5.8",
-        "@frontify/fondue": "12.0.1",
+        "@frontify/fondue": "12.0.8",
         "@frontify/fondue-tokens": "^3.5.0",
         "@radix-ui/react-tabs": "^1.0.4",
         "brotli-wasm": "^2.0.1",
